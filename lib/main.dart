@@ -1,3 +1,4 @@
+import 'package:cafey_app/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,7 +13,7 @@ class CafeyApp extends StatelessWidget {
     return MaterialApp(
       title: "Cafey App",
       debugShowCheckedModeBanner: false,
-      home: Scaffold(body: SafeArea(child: Text("CAFEY APP"))),
+      home: HomeScreen(),
     );
   }
 }
