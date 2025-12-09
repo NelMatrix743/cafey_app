@@ -6,7 +6,9 @@ const String assetDirPath = "assets/icons/";
 const shoppingCartOutlinedIcon = AssetImage(
   "${assetDirPath}shopping_cart_outlined.png",
 );
-const shoppingCartFilledIcon = AssetImage("${assetDirPath}shopping");
+const shoppingCartFilledIcon = AssetImage(
+  "${assetDirPath}shopping_cart_filled.png",
+);
 
 const homeOutlinedIcon = AssetImage("${assetDirPath}home_outlined.png");
 const homeFilledIcon = AssetImage("${assetDirPath}home_filled.png");
