@@ -1,4 +1,6 @@
 import "package:cafey_app/components/bottom_nav_bar.dart";
+import "package:cafey_app/screens/sections/home_section.dart";
+import "package:cafey_app/screens/sections/shopping_cart_section.dart";
 import "package:cafey_app/utils/const_properties.dart";
 import "package:flutter/material.dart";
 
@@ -10,11 +12,28 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int _selectedScreenIndex = 0;
+
+  static final List<Widget> _homeScreenSections = <Widget>[
+    HomeSection(),
+    ShoppingCartSection(),
+  ];
+
+  void selectSectionDestination(int selectIndex) {
+    setState(() {
+      _selectedScreenIndex = selectIndex;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: mainBackgroundColor,
-      bottomNavigationBar: CafeyBottomNavBar(),
+      bottomNavigationBar: CafeyBottomNavBar(
+        selectedSectionIndex: _selectedScreenIndex,
+        onDestinationSelectedCallBack: selectSectionDestination,
+      ),
+      body: _homeScreenSections[_selectedScreenIndex],
     );
   }
 }
