@@ -13,6 +13,7 @@ class CafeyApp extends StatelessWidget {
     return MaterialApp(
       title: "Cafey App",
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(fontFamily: "Consolas"),
       home: HomeScreen(),
     );
   }
