@@ -2,8 +2,10 @@ import 'package:cafey_app/models/user_cart.dart';
 import 'package:cafey_app/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+//import "package:flutter/rendering.dart";
 
 void main() {
+  //debugPaintSizeEnabled = true;
   runApp(const CafeyApp());
 }
 
