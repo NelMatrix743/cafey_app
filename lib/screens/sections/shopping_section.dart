@@ -1,4 +1,4 @@
-import "package:cafey_app/components/coffee_tile.dart";
+import "package:cafey_app/components/shop_coffee_tile.dart";
 import "package:cafey_app/models/coffe_store.dart";
 import "package:cafey_app/models/coffee.dart";
 import "package:cafey_app/models/user_cart.dart";
