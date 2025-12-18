@@ -21,7 +21,13 @@ class CoffeeProductTile extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 10),
       child: ListTile(
         title: Text(coffeeProduct.name),
-        subtitle: Text(coffeeProduct.price),
+        subtitle: Container(
+          margin: EdgeInsets.only(top: 5),
+          child: Text(
+            coffeeProduct.price,
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+        ),
         leading: Image(
           image: coffeeProduct.coffeeImage,
           width: 70.0,
