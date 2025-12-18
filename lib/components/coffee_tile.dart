@@ -27,7 +27,17 @@ class CoffeeProductTile extends StatelessWidget {
           width: 70.0,
           height: 70.0,
         ),
-        trailing: IconButton(icon: Icon(Icons.add), onPressed: onAddPressed),
+        trailing: IconButton(
+          icon: Icon(Icons.add),
+          onPressed: onAddPressed,
+          style: IconButton.styleFrom(
+            backgroundColor: Colors.brown,
+            foregroundColor: Colors.white,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
+        ),
       ),
     );
   }
