@@ -19,9 +19,9 @@ class CafeyBottomNavBar extends StatelessWidget {
       onDestinationSelected: onDestinationSelectedCallBack,
       destinations: const <Widget>[
         NavigationDestination(
-          icon: ImageIcon(homeOutlinedIcon),
-          selectedIcon: ImageIcon(homeFilledIcon, color: Colors.brown),
-          label: "Home",
+          icon: ImageIcon(coffeeShopOutlinedIcon),
+          selectedIcon: ImageIcon(coffeeShopFilledIcon, color: Colors.brown),
+          label: "Shop",
         ),
         NavigationDestination(
           icon: ImageIcon(shoppingCartOutlinedIcon),
