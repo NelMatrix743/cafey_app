@@ -6,6 +6,13 @@ const String assetDirPath = "assets/icons/";
 const homeOutlinedIcon = AssetImage("${assetDirPath}home_outlined.png");
 const homeFilledIcon = AssetImage("${assetDirPath}home_filled.png");
 
+const coffeeShopOutlinedIcon = AssetImage(
+  "${assetDirPath}coffee_shop_outlined.png",
+);
+const coffeeShopFilledIcon = AssetImage(
+  "${assetDirPath}coffee_shop_filled.png",
+);
+
 const shoppingCartOutlinedIcon = AssetImage(
   "${assetDirPath}shopping_cart_outlined.png",
 );
