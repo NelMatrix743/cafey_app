@@ -15,7 +15,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int _selectedScreenIndex = 0;
 
   static final List<Widget> _homeScreenSections = <Widget>[
-    ShoppingCartSection(),
+    ShoppingSection(),
     CartSection(),
   ];
 

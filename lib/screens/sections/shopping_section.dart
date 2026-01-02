@@ -6,14 +6,14 @@ import "package:flutter/material.dart";
 import "package:provider/provider.dart";
 import "../../utils/strings.dart";
 
-class ShoppingCartSection extends StatefulWidget {
-  const ShoppingCartSection({super.key});
+class ShoppingSection extends StatefulWidget {
+  const ShoppingSection({super.key});
 
   @override
-  State<ShoppingCartSection> createState() => _ShoppingCartSectionState();
+  State<ShoppingSection> createState() => _ShoppingSectionState();
 }
 
-class _ShoppingCartSectionState extends State<ShoppingCartSection> {
+class _ShoppingSectionState extends State<ShoppingSection> {
   final List<Coffee> allAvailableCoffee = CoffeeStore.getCoffeeShopProducts;
 
   void addCoffeeProductToCart(Coffee userCoffeeChoice) {
