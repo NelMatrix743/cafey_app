@@ -2,9 +2,9 @@ import "package:flutter/material.dart";
 import "./coffee.dart";
 
 class UserCart extends ChangeNotifier {
-  final List<Coffee> _userCoffeeCart = <Coffee>[];
+  final Set<Coffee> _userCoffeeCart = <Coffee>{};
 
-  List<Coffee> get getUserCart => _userCoffeeCart;
+  Set<Coffee> get getUserCart => _userCoffeeCart;
 
   void addItemToCart(Coffee coffeeProduct) {
     _userCoffeeCart.add(coffeeProduct);
