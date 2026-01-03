@@ -2,15 +2,27 @@ import "package:flutter/material.dart";
 import "./coffee.dart";
 
 class UserCart extends ChangeNotifier {
-  final Set<Coffee> _userCoffeeCart = <Coffee>{};
+  final Map<Coffee, int> _userCoffeeCart = {};
 
-  Set<Coffee> get getUserCart => _userCoffeeCart;
+  Map<Coffee, int> get getUserCartContents => _userCoffeeCart;
 
   void addItemToCart(Coffee coffeeProduct) {
-    _userCoffeeCart.add(coffeeProduct);
+    _userCoffeeCart.update(
+      coffeeProduct,
+      (value) => value + 1,
+      ifAbsent: () => 1,
+    );
+    notifyListeners();
   }
 
-  void removeItemFromCart(Coffee coffeeProuct) {
-    _userCoffeeCart.remove(coffeeProuct);
+  void removeItemFromCart(Coffee coffeeProduct) {
+    if (!_userCoffeeCart.containsKey(coffeeProduct)) return;
+
+    if (_userCoffeeCart[coffeeProduct]! > 1) {
+      _userCoffeeCart[coffeeProduct] = _userCoffeeCart[coffeeProduct]! - 1;
+    } else {
+      _userCoffeeCart.remove(coffeeProduct);
+    }
+    notifyListeners();
   }
 }
