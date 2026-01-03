@@ -1,54 +1,42 @@
 import "package:flutter/material.dart";
+import "package:provider/provider.dart";
+
 import "package:cafey_app/models/coffee.dart";
+import "package:cafey_app/models/user_cart.dart";
+import "package:cafey_app/models/user_balance.dart";
 
-class CartContentTile extends StatefulWidget {
+class CartContentTile extends StatelessWidget {
   final Coffee selectedCoffee;
-  final void Function(double) addToTotalAmountAndCoffeeCups;
-  final void Function(double) removeFromTotalAmountAndCoffeeCups;
 
-  const CartContentTile({
-    super.key,
-    required this.selectedCoffee,
-    required this.addToTotalAmountAndCoffeeCups,
-    required this.removeFromTotalAmountAndCoffeeCups,
-  });
+  const CartContentTile({super.key, required this.selectedCoffee});
 
-  @override
-  State<CartContentTile> createState() => _CartContentTileState();
-}
-
-class _CartContentTileState extends State<CartContentTile> {
-  int _numberOfCups = 1;
-
-  void addACup() {
-    setState(() {
-      if (!(_numberOfCups > 5)) {
-        _numberOfCups += 1;
-        widget.addToTotalAmountAndCoffeeCups(
-          double.parse(widget.selectedCoffee.price),
-        );
-      } else {
-        // show a toast, telling users "a coffee can't have more than 5 cups";
-      }
-    });
+  void addACup(UserCart cart, UserBalance balance, int cups, double price) {
+    if (cups < 5) {
+      cart.addItemToCart(selectedCoffee);
+      balance.addCoffee(price);
+    } else {
+      // show a toast, telling users "a coffee can't have more than 5 cups";
+    }
   }
 
-  void removeACup() {
-    setState(() {
-      if (!(_numberOfCups < 1)) {
-        _numberOfCups -= 1;
-        widget.removeFromTotalAmountAndCoffeeCups(
-          double.parse(widget.selectedCoffee.price),
-        );
-      } else {
-        // show a toast, telling users "a coffee can't have less than 1 cups";
-        // "please slide to delete";
-      }
-    });
+  void removeACup(UserCart cart, UserBalance balance, int cups, double price) {
+    if (cups > 1) {
+      cart.removeItemFromCart(selectedCoffee);
+      balance.removeCoffee(price);
+    } else {
+      // show a toast, telling users "a coffee can't have less than 1 cups";
+      // "please slide to delete";
+    }
   }
 
   @override
   Widget build(BuildContext context) {
+    final UserCart userCart = context.watch<UserCart>();
+    final UserBalance userBalance = context.read<UserBalance>();
+
+    final int numberOfCups = userCart.getUserCartContents[selectedCoffee]!;
+    final double coffeeProductPrice = double.parse(selectedCoffee.price);
+
     return Container(
       decoration: BoxDecoration(
         color: Colors.grey[400],
@@ -57,25 +45,41 @@ class _CartContentTileState extends State<CartContentTile> {
       margin: const EdgeInsets.only(bottom: 15.0),
       padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 5),
       child: ListTile(
-        title: Text(widget.selectedCoffee.name),
+        title: Text(selectedCoffee.name),
         subtitle: Container(
           margin: EdgeInsets.only(top: 5),
           child: Text(
-            widget.selectedCoffee.price,
+            selectedCoffee.price,
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
         leading: Image(
-          image: widget.selectedCoffee.coffeeImage,
+          image: selectedCoffee.coffeeImage,
           width: 70.0,
           height: 70.0,
         ),
         trailing: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
-            IconButton(onPressed: removeACup, icon: Icon(Icons.remove)),
-            Text(_numberOfCups.toString()),
-            IconButton(onPressed: addACup, icon: Icon(Icons.add)),
+            IconButton(
+              onPressed: () => removeACup(
+                userCart,
+                userBalance,
+                numberOfCups,
+                coffeeProductPrice,
+              ),
+              icon: Icon(Icons.remove),
+            ),
+            Text(numberOfCups.toString()),
+            IconButton(
+              onPressed: () => addACup(
+                userCart,
+                userBalance,
+                numberOfCups,
+                coffeeProductPrice,
+              ),
+              icon: Icon(Icons.add),
+            ),
           ],
         ),
       ),
