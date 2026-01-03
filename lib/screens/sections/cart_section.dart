@@ -20,15 +20,18 @@ class CartSection extends StatelessWidget {
               InformationHeader(),
               SizedBox(height: 30),
               // ListBuilder,
-              ListView.builder(
-                itemCount: userCart.getUserCartContents.length,
-                itemBuilder: (context, index) {
-                  final entry = userCart.getUserCartContents.entries.elementAt(
-                    index,
-                  );
-                  final Coffee coffee = entry.key;
-                  return CartContentTile(selectedCoffee: coffee);
-                },
+              Expanded(
+                child: userCart.getUserCartContents.isEmpty
+                    ? const Center(child: Text("Your cart is empty"))
+                    : ListView.builder(
+                        itemCount: userCart.getUserCartContents.length,
+                        itemBuilder: (context, index) {
+                          final entry = userCart.getUserCartContents.entries
+                              .elementAt(index);
+                          final Coffee coffee = entry.key;
+                          return CartContentTile(selectedCoffee: coffee);
+                        },
+                      ),
               ),
             ],
           ),
