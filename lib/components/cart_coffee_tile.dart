@@ -1,3 +1,4 @@
+import "package:cafey_app/components/cart_content_button.dart";
 import "package:flutter/material.dart";
 import "package:provider/provider.dart";
 
@@ -43,7 +44,7 @@ class CartContentTile extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(15.0)),
       ),
       margin: const EdgeInsets.only(bottom: 15.0),
-      padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 5),
+      padding: const EdgeInsets.only(top: 30.0, bottom: 30.0),
       child: ListTile(
         title: Text(selectedCoffee.name),
         subtitle: Container(
@@ -60,25 +61,38 @@ class CartContentTile extends StatelessWidget {
         ),
         trailing: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            IconButton(
+            CartContentButton(
+              icon: Icon(Icons.remove),
               onPressed: () => removeACup(
                 userCart,
                 userBalance,
                 numberOfCups,
                 coffeeProductPrice,
               ),
-              icon: Icon(Icons.remove),
             ),
-            Text(numberOfCups.toString()),
-            IconButton(
+            SizedBox(width: 8),
+            Container(
+              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.brown, width: 2),
+                borderRadius: BorderRadius.circular(6),
+              ),
+              child: Text(
+                numberOfCups.toString(),
+                style: TextStyle(fontSize: 15),
+              ),
+            ),
+            SizedBox(width: 8),
+            CartContentButton(
+              icon: Icon(Icons.add),
               onPressed: () => addACup(
                 userCart,
                 userBalance,
                 numberOfCups,
                 coffeeProductPrice,
               ),
-              icon: Icon(Icons.add),
             ),
           ],
         ),
