@@ -9,13 +9,18 @@ import "package:cafey_app/models/user_balance.dart";
 
 class CartContentTile extends StatelessWidget {
   final Coffee selectedCoffee;
+  final VoidCallback deleteAction;
 
-  const CartContentTile({super.key, required this.selectedCoffee});
+  const CartContentTile({
+    super.key,
+    required this.selectedCoffee,
+    required this.deleteAction,
+  });
 
   void addACup(UserCart cart, UserBalance balance, int cups, double price) {
     if (cups < 5) {
       cart.addItemToCart(selectedCoffee);
-      balance.addCoffee(price);
+      balance.addCoffee(price, 1);
     } else {
       // show a toast, telling users "a coffee can't have more than 5 cups";
     }
@@ -24,14 +29,12 @@ class CartContentTile extends StatelessWidget {
   void removeACup(UserCart cart, UserBalance balance, int cups, double price) {
     if (cups > 1) {
       cart.removeItemFromCart(selectedCoffee);
-      balance.removeCoffee(price);
+      balance.removeCoffee(price, 1);
     } else {
       // show a toast, telling users "a coffee can't have less than 1 cups";
       // "please slide to delete";
     }
   }
-
-  void deleteContentFromCart() {}
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +50,7 @@ class CartContentTile extends StatelessWidget {
         extentRatio: 0.4,
         children: <Widget>[
           SlidableAction(
-            onPressed: ((context) => deleteContentFromCart()),
+            onPressed: ((context) => deleteAction()),
             icon: Icons.delete,
             foregroundColor: Colors.white,
             backgroundColor: Colors.brown,
