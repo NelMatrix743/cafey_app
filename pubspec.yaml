@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   provider: ^6.1.5+1 
   flutter_slidable: ^4.0.3
+  delightful_toast: ^1.1.0
 
 dev_dependencies:
   flutter_test:
