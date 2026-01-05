@@ -7,15 +7,15 @@ class UserBalance extends ChangeNotifier {
   double get totalAmountToPay => _totalAmountToPay;
   int get totalNumberOfCoffeeCups => _totalNumberOfCoffeeCups;
 
-  void addCoffee(double price) {
+  void addCoffee(double price, int numberOfCups) {
     _totalAmountToPay += price;
-    _totalNumberOfCoffeeCups += 1;
+    _totalNumberOfCoffeeCups += numberOfCups;
     notifyListeners();
   }
 
-  void removeCoffee(double price) {
+  void removeCoffee(double price, int numberOfCups) {
     _totalAmountToPay -= price;
-    _totalNumberOfCoffeeCups -= 1;
+    _totalNumberOfCoffeeCups -= numberOfCups;
     notifyListeners();
   }
 }
