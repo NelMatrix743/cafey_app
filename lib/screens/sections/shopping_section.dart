@@ -1,12 +1,15 @@
-import "package:cafey_app/models/user_balance.dart";
 import "package:flutter/material.dart";
 import "package:provider/provider.dart";
 
 import "package:cafey_app/components/shop_coffee_tile.dart";
+
 import "package:cafey_app/models/coffe_store.dart";
 import "package:cafey_app/models/coffee.dart";
 import "package:cafey_app/models/user_cart.dart";
+import "package:cafey_app/models/user_balance.dart";
+
 import "package:cafey_app/utils/strings.dart";
+import "package:cafey_app/utils/cafey_toast.dart";
 
 class ShoppingSection extends StatefulWidget {
   const ShoppingSection({super.key});
@@ -24,7 +27,11 @@ class _ShoppingSectionState extends State<ShoppingSection> {
     UserBalance balance,
   ) {
     if (cart.getUserCartContents.containsKey(userCoffeeChoice)) {
-      return; // TODO: show a toast
+      showCafeyToast(
+        context,
+        "${userCoffeeChoice.name} has already\nbeen added to cart",
+      );
+      return;
     }
     cart.addItemToCart(userCoffeeChoice);
     balance.addCoffee(double.parse(userCoffeeChoice.price), 1);
