@@ -23,7 +23,7 @@ class CartSection extends StatelessWidget {
               Expanded(
                 child: userCart.getUserCartContents.isEmpty
                     ? const Center(child: Text("Your cart is empty"))
-                    : ListView.builder(
+                    : ListView.separated(
                         itemCount: userCart.getUserCartContents.length,
                         itemBuilder: (context, index) {
                           final entry = userCart.getUserCartContents.entries
@@ -31,6 +31,8 @@ class CartSection extends StatelessWidget {
                           final Coffee coffee = entry.key;
                           return CartContentTile(selectedCoffee: coffee);
                         },
+                        separatorBuilder: (context, index) =>
+                            SizedBox(height: 15),
                       ),
               ),
             ],
