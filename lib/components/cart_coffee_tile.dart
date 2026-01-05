@@ -1,5 +1,6 @@
 import "package:cafey_app/components/cart_content_button.dart";
 import "package:flutter/material.dart";
+import "package:flutter_slidable/flutter_slidable.dart";
 import "package:provider/provider.dart";
 
 import "package:cafey_app/models/coffee.dart";
@@ -30,6 +31,8 @@ class CartContentTile extends StatelessWidget {
     }
   }
 
+  void deleteContentFromCart() {}
+
   @override
   Widget build(BuildContext context) {
     final UserCart userCart = context.watch<UserCart>();
@@ -38,63 +41,80 @@ class CartContentTile extends StatelessWidget {
     final int numberOfCups = userCart.getUserCartContents[selectedCoffee]!;
     final double coffeeProductPrice = double.parse(selectedCoffee.price);
 
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.grey[400],
-        borderRadius: BorderRadius.all(Radius.circular(15.0)),
-      ),
-      margin: const EdgeInsets.only(bottom: 15.0),
-      padding: const EdgeInsets.only(top: 30.0, bottom: 30.0),
-      child: ListTile(
-        title: Text(selectedCoffee.name),
-        subtitle: Container(
-          margin: EdgeInsets.only(top: 5),
-          child: Text(
-            selectedCoffee.price,
-            style: TextStyle(fontWeight: FontWeight.bold),
+    return Slidable(
+      endActionPane: ActionPane(
+        motion: BehindMotion(),
+        extentRatio: 0.4,
+        children: <Widget>[
+          SlidableAction(
+            onPressed: ((context) => deleteContentFromCart()),
+            icon: Icons.delete,
+            foregroundColor: Colors.white,
+            backgroundColor: Colors.brown,
+            borderRadius: BorderRadius.circular(12),
           ),
+        ],
+      ),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.grey[400],
+          borderRadius: BorderRadius.all(Radius.circular(15.0)),
         ),
-        leading: Image(
-          image: selectedCoffee.coffeeImage,
-          width: 70.0,
-          height: 70.0,
-        ),
-        trailing: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            CartContentButton(
-              icon: Icon(Icons.remove),
-              onPressed: () => removeACup(
-                userCart,
-                userBalance,
-                numberOfCups,
-                coffeeProductPrice,
-              ),
+        padding: const EdgeInsets.only(top: 30.0, bottom: 30.0),
+        child: ListTile(
+          title: Text(selectedCoffee.name),
+          subtitle: Container(
+            margin: EdgeInsets.only(top: 5),
+            child: Text(
+              selectedCoffee.price,
+              style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            SizedBox(width: 8),
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.brown, width: 2),
-                borderRadius: BorderRadius.circular(6),
+          ),
+          leading: Image(
+            image: selectedCoffee.coffeeImage,
+            width: 70.0,
+            height: 70.0,
+          ),
+          trailing: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              CartContentButton(
+                icon: Icon(Icons.remove),
+                onPressed: () => removeACup(
+                  userCart,
+                  userBalance,
+                  numberOfCups,
+                  coffeeProductPrice,
+                ),
               ),
-              child: Text(
-                numberOfCups.toString(),
-                style: TextStyle(fontSize: 15),
+              SizedBox(width: 8),
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 5,
+                  horizontal: 10,
+                ),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.brown, width: 2),
+                  borderRadius: BorderRadius.circular(6),
+                ),
+                child: Text(
+                  numberOfCups.toString(),
+                  style: TextStyle(fontSize: 15),
+                ),
               ),
-            ),
-            SizedBox(width: 8),
-            CartContentButton(
-              icon: Icon(Icons.add),
-              onPressed: () => addACup(
-                userCart,
-                userBalance,
-                numberOfCups,
-                coffeeProductPrice,
+              SizedBox(width: 8),
+              CartContentButton(
+                icon: Icon(Icons.add),
+                onPressed: () => addACup(
+                  userCart,
+                  userBalance,
+                  numberOfCups,
+                  coffeeProductPrice,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
