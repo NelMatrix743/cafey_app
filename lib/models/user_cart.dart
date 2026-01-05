@@ -25,4 +25,10 @@ class UserCart extends ChangeNotifier {
     }
     notifyListeners();
   }
+
+  int removeItemFromCartCompletely(Coffee coffeeProduct) {
+    int numberOfCups = _userCoffeeCart.remove(coffeeProduct)!;
+    notifyListeners();
+    return numberOfCups;
+  }
 }
