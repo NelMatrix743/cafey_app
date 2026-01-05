@@ -7,6 +7,9 @@ import "package:cafey_app/models/coffee.dart";
 import "package:cafey_app/models/user_cart.dart";
 import "package:cafey_app/models/user_balance.dart";
 
+import "package:cafey_app/utils/strings.dart";
+import "package:cafey_app/utils/cafey_toast.dart";
+
 class CartContentTile extends StatelessWidget {
   final Coffee selectedCoffee;
   final VoidCallback deleteAction;
@@ -17,22 +20,33 @@ class CartContentTile extends StatelessWidget {
     required this.deleteAction,
   });
 
-  void addACup(UserCart cart, UserBalance balance, int cups, double price) {
+  void addACup(
+    BuildContext context,
+    UserCart cart,
+    UserBalance balance,
+    int cups,
+    double price,
+  ) {
     if (cups < 5) {
       cart.addItemToCart(selectedCoffee);
       balance.addCoffee(price, 1);
     } else {
-      // show a toast, telling users "a coffee can't have more than 5 cups";
+      showCafeyToast(context, maxCupNumberExceeded);
     }
   }
 
-  void removeACup(UserCart cart, UserBalance balance, int cups, double price) {
+  void removeACup(
+    BuildContext context,
+    UserCart cart,
+    UserBalance balance,
+    int cups,
+    double price,
+  ) {
     if (cups > 1) {
       cart.removeItemFromCart(selectedCoffee);
       balance.removeCoffee(price, 1);
     } else {
-      // show a toast, telling users "a coffee can't have less than 1 cups";
-      // "please slide to delete";
+      showCafeyToast(context, minCupNumberExceeded);
     }
   }
 
@@ -85,6 +99,7 @@ class CartContentTile extends StatelessWidget {
               CartContentButton(
                 icon: Icon(Icons.remove),
                 onPressed: () => removeACup(
+                  context,
                   userCart,
                   userBalance,
                   numberOfCups,
@@ -110,6 +125,7 @@ class CartContentTile extends StatelessWidget {
               CartContentButton(
                 icon: Icon(Icons.add),
                 onPressed: () => addACup(
+                  context,
                   userCart,
                   userBalance,
                   numberOfCups,
