@@ -8,6 +8,7 @@ import "package:cafey_app/models/user_cart.dart";
 import "package:cafey_app/models/user_balance.dart";
 
 import "package:cafey_app/utils/strings.dart";
+import "package:cafey_app/utils/image_assets.dart";
 import "package:cafey_app/utils/cafey_toast.dart";
 
 class CartContentTile extends StatelessWidget {
@@ -63,12 +64,12 @@ class CartContentTile extends StatelessWidget {
         motion: BehindMotion(),
         extentRatio: 0.4,
         children: <Widget>[
-          SlidableAction(
+          CustomSlidableAction(
             onPressed: ((context) => deleteAction()),
-            icon: Icons.delete,
             foregroundColor: Colors.white,
             backgroundColor: Colors.brown,
             borderRadius: BorderRadius.circular(12),
+            child: ImageIcon(deleteTileFilledIcon, size: 25),
           ),
         ],
       ),
