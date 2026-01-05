@@ -27,7 +27,7 @@ class _ShoppingSectionState extends State<ShoppingSection> {
       return; // TODO: show a toast
     }
     cart.addItemToCart(userCoffeeChoice);
-    balance.addCoffee(double.parse(userCoffeeChoice.price));
+    balance.addCoffee(double.parse(userCoffeeChoice.price), 1);
   }
 
   @override
