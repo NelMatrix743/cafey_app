@@ -62,6 +62,30 @@ class CartSection extends StatelessWidget {
                             SizedBox(height: 15),
                       ),
               ),
+
+              Visibility(
+                visible: userInfo.getUserCartContents.isNotEmpty,
+                child: GestureDetector(
+                  child: Container(
+                    padding: EdgeInsets.symmetric(vertical: 20, horizontal: 25),
+                    margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: Colors.brown,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: const Center(
+                      child: Text(
+                        "PAY NOW",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
