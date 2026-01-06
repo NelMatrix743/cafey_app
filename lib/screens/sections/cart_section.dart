@@ -34,7 +34,15 @@ class CartSection extends StatelessWidget {
               // ListBuilder,
               Expanded(
                 child: userInfo.getUserCartContents.isEmpty
-                    ? const Center(child: Text("Your cart is empty"))
+                    ? const Center(
+                        child: Text(
+                          "Your cart is empty",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      )
                     : ListView.separated(
                         itemCount: userInfo.getUserCartContents.length,
                         itemBuilder: (context, index) {

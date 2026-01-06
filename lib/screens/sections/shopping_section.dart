@@ -57,7 +57,7 @@ class _ShoppingSectionState extends State<ShoppingSection> {
                   style: TextStyle(
                     fontSize: 17,
                     // fontFamily: "Consolas",
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ),
