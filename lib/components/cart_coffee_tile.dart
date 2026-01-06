@@ -1,11 +1,12 @@
-import "package:cafey_app/components/cart_content_button.dart";
 import "package:flutter/material.dart";
-import "package:flutter_slidable/flutter_slidable.dart";
+
 import "package:provider/provider.dart";
+import "package:flutter_slidable/flutter_slidable.dart";
+
+import "package:cafey_app/components/cart_content_button.dart";
 
 import "package:cafey_app/models/coffee.dart";
-import "package:cafey_app/models/user_cart.dart";
-import "package:cafey_app/models/user_balance.dart";
+import "package:cafey_app/models/user_info.dart";
 
 import "package:cafey_app/utils/strings.dart";
 import "package:cafey_app/utils/image_assets.dart";
@@ -23,14 +24,13 @@ class CartContentTile extends StatelessWidget {
 
   void addACup(
     BuildContext context,
-    UserCart cart,
-    UserBalance balance,
+    UserInformation userInfo,
     int cups,
     double price,
   ) {
     if (cups < 5) {
-      cart.addItemToCart(selectedCoffee);
-      balance.addCoffee(price, 1);
+      userInfo.addItemToCart(selectedCoffee);
+      userInfo.addCoffee(price, 1);
     } else {
       showCafeyToast(context, maxCupNumberExceeded);
     }
@@ -38,14 +38,13 @@ class CartContentTile extends StatelessWidget {
 
   void removeACup(
     BuildContext context,
-    UserCart cart,
-    UserBalance balance,
+    UserInformation userInfo,
     int cups,
     double price,
   ) {
     if (cups > 1) {
-      cart.removeItemFromCart(selectedCoffee);
-      balance.removeCoffee(price, 1);
+      userInfo.removeItemFromCart(selectedCoffee);
+      userInfo.removeCoffee(price, 1);
     } else {
       showCafeyToast(context, minCupNumberExceeded);
     }
@@ -53,10 +52,9 @@ class CartContentTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final UserCart userCart = context.watch<UserCart>();
-    final UserBalance userBalance = context.read<UserBalance>();
+    final UserInformation userInfo = context.watch<UserInformation>();
 
-    final int numberOfCups = userCart.getUserCartContents[selectedCoffee]!;
+    final int numberOfCups = userInfo.getUserCartContents[selectedCoffee]!;
     final double coffeeProductPrice = double.parse(selectedCoffee.price);
 
     return Slidable(
@@ -101,8 +99,7 @@ class CartContentTile extends StatelessWidget {
                 icon: Icon(Icons.remove),
                 onPressed: () => removeACup(
                   context,
-                  userCart,
-                  userBalance,
+                  userInfo,
                   numberOfCups,
                   coffeeProductPrice,
                 ),
@@ -127,8 +124,7 @@ class CartContentTile extends StatelessWidget {
                 icon: Icon(Icons.add),
                 onPressed: () => addACup(
                   context,
-                  userCart,
-                  userBalance,
+                  userInfo,
                   numberOfCups,
                   coffeeProductPrice,
                 ),

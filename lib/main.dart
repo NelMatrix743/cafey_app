@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 //import "package:flutter/rendering.dart";
 
-import 'package:cafey_app/models/user_cart.dart';
-import 'package:cafey_app/models/user_balance.dart';
+import 'package:provider/provider.dart';
+
+import 'package:cafey_app/models/user_info.dart';
+
 import 'package:cafey_app/screens/home_screen.dart';
 
 void main() {
@@ -16,12 +17,9 @@ class CafeyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (context) => UserCart()),
-        ChangeNotifierProvider(create: (context) => UserBalance()),
-      ],
-      child: MaterialApp(
+    return ChangeNotifierProvider(
+      create: (context) => UserInformation(),
+      builder: (context, child) => MaterialApp(
         title: "Cafey App",
         debugShowCheckedModeBanner: false,
         theme: ThemeData(fontFamily: "Consolas"),

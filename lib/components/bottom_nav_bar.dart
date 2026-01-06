@@ -1,6 +1,7 @@
+import "package:flutter/material.dart";
+
 import "package:cafey_app/utils/const_properties.dart";
 import "package:cafey_app/utils/image_assets.dart";
-import "package:flutter/material.dart";
 
 class CafeyBottomNavBar extends StatelessWidget {
   final int selectedSectionIndex;

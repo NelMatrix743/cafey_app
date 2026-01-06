@@ -1,5 +1,6 @@
-import "../utils/image_assets.dart";
-import "./coffee.dart";
+import "package:cafey_app/models/coffee.dart";
+
+import "package:cafey_app/utils/image_assets.dart";
 
 class CoffeeStore {
   static final List<Coffee> _availableCoffeeProducts = <Coffee>[

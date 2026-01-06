@@ -1,5 +1,6 @@
-import "package:cafey_app/models/coffee.dart";
 import "package:flutter/material.dart";
+
+import "package:cafey_app/models/coffee.dart";
 
 class CoffeeProductTile extends StatelessWidget {
   final Coffee coffeeProduct;
