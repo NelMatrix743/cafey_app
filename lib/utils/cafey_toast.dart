@@ -5,7 +5,9 @@ import 'package:delightful_toast/toast/components/toast_card.dart';
 
 import "package:cafey_app/utils/image_assets.dart";
 
-void showCafeyToast(BuildContext context, String message) {
+enum ToastType { success, warning }
+
+void showCafeyToast(BuildContext context, String message, ToastType type) {
   DelightToastBar(
     builder: (context) {
       return ToastCard(
@@ -15,8 +17,10 @@ void showCafeyToast(BuildContext context, String message) {
             style: TextStyle(fontWeight: FontWeight.w700, fontSize: 15.0),
           ),
         ),
-        leading: const ImageIcon(
-          toastAlertFilledIcon,
+        leading: ImageIcon(
+          type == ToastType.warning
+              ? toastAlertFilledIcon
+              : toastSuccessFilledIcon,
           color: Colors.brown,
           size: 30,
         ),
