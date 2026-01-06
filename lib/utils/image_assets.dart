@@ -48,6 +48,7 @@ const icedCoffeeSharpAssetIcon = AssetImage(
 
 // toast widget icons
 const toastAlertFilledIcon = AssetImage("${assetDirPath}alert_filled.png");
+const toastSuccessFilledIcon = AssetImage("${assetDirPath}success_filled.png");
 const toastCloseFilledIcon = AssetImage("${assetDirPath}close_filled.png");
 
 // slidable widget icon
