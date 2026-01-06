@@ -29,11 +29,17 @@ class _ShoppingSectionState extends State<ShoppingSection> {
       showCafeyToast(
         context,
         "${userCoffeeChoice.name} has already\nbeen added to cart",
+        ToastType.warning,
       );
       return;
     }
     userInfo.addItemToCart(userCoffeeChoice);
     userInfo.addCoffee(double.parse(userCoffeeChoice.price), 1);
+    showCafeyToast(
+      context,
+      "${userCoffeeChoice.name} added successfully!",
+      ToastType.success,
+    );
   }
 
   @override

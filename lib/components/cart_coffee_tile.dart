@@ -32,7 +32,7 @@ class CartContentTile extends StatelessWidget {
       userInfo.addItemToCart(selectedCoffee);
       userInfo.addCoffee(price, 1);
     } else {
-      showCafeyToast(context, maxCupNumberExceeded);
+      showCafeyToast(context, maxCupNumberExceeded, ToastType.warning);
     }
   }
 
@@ -46,7 +46,7 @@ class CartContentTile extends StatelessWidget {
       userInfo.removeItemFromCart(selectedCoffee);
       userInfo.removeCoffee(price, 1);
     } else {
-      showCafeyToast(context, minCupNumberExceeded);
+      showCafeyToast(context, minCupNumberExceeded, ToastType.warning);
     }
   }
 
