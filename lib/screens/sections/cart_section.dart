@@ -4,6 +4,7 @@ import "package:provider/provider.dart";
 
 import "package:cafey_app/components/info_header.dart";
 import "package:cafey_app/components/cart_coffee_tile.dart";
+import "package:cafey_app/components/cafey_pay_button.dart";
 
 import "package:cafey_app/models/coffee.dart";
 import "package:cafey_app/models/user_info.dart";
@@ -20,6 +21,8 @@ class CartSection extends StatelessWidget {
         double.parse(selectedCoffee.price) * numberOfCups;
     userInfo.removeCoffee(totalPriceToDeduct, numberOfCups);
   }
+
+  void paymentButtonCallBack() {}
 
   @override
   Widget build(BuildContext context) {
@@ -65,26 +68,7 @@ class CartSection extends StatelessWidget {
 
               Visibility(
                 visible: userInfo.getUserCartContents.isNotEmpty,
-                child: GestureDetector(
-                  child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 20, horizontal: 25),
-                    margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      color: Colors.brown,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: const Center(
-                      child: Text(
-                        "PAY NOW",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                child: CafeyPayButton(onTapCallBack: paymentButtonCallBack),
               ),
             ],
           ),
