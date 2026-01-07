@@ -1,16 +1,9 @@
-# cafey_app
 
-A new Flutter project.
+#   CAFEY APP
 
-## Getting Started
+___Cafey___ is a simple __coffee app__ built with __Dart__ and __Flutter__. It lets you pcik among four available types of coffee, select the number of cups you desire, and proceed with payment finalization (no backend integration. Just a frontend demo). It features a simple UI and UX that lets you add coffee type to cart, increment or decrement number of cups, and remove coffee types entirely from cart.  
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
+![app mockup screenshot](mockup/app_mockup.png)  
+<br/>
+Feel free to use this **codebase** and modify the resulting **app** as you see fit. [;)] 
