@@ -37,6 +37,7 @@ dependencies:
   provider: ^6.1.5+1 
   flutter_slidable: ^4.0.3
   delightful_toast: ^1.1.0
+  flutter_screenutil: ^5.9.3
 
 dev_dependencies:
   flutter_test:
