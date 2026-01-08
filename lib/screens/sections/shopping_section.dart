@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 
 import "package:provider/provider.dart";
+import "package:flutter_screenutil/flutter_screenutil.dart";
 
 import "package:cafey_app/components/shop_coffee_tile.dart";
 
@@ -47,21 +48,21 @@ class _ShoppingSectionState extends State<ShoppingSection> {
     return Consumer<UserInformation>(
       builder: (context, userInfo, child) => SafeArea(
         child: Padding(
-          padding: EdgeInsets.fromLTRB(15.0, 20.0, 15.0, 10.0),
+          padding: EdgeInsets.fromLTRB(15.0.w, 20.0.h, 15.0.w, 10.0.h),
           child: Column(
             children: <Widget>[
               Align(
                 alignment: Alignment.centerLeft,
-                child: const Text(
+                child: Text(
                   coffeePresentationQuestion,
                   style: TextStyle(
-                    fontSize: 17,
+                    fontSize: 17.sp,
                     // fontFamily: "Consolas",
                     fontWeight: FontWeight.w600,
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20.h),
               Expanded(
                 child: ListView.builder(
                   itemCount: allAvailableCoffee.length,

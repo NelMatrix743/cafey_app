@@ -1,5 +1,7 @@
 import "package:flutter/material.dart";
 
+import "package:flutter_screenutil/flutter_screenutil.dart";
+
 class InfoBox extends StatelessWidget {
   final String infoType;
   final String value;
@@ -9,19 +11,19 @@ class InfoBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.brown, width: 1),
-        borderRadius: BorderRadius.circular(3),
+        border: Border.all(color: Colors.brown, width: 1.h),
+        borderRadius: BorderRadius.circular(3.r),
       ),
       child: Text.rich(
         TextSpan(
           text: infoType,
-          style: const TextStyle(fontSize: 16, color: Colors.brown),
+          style: TextStyle(fontSize: 16.sp, color: Colors.brown),
           children: [
             TextSpan(
               text: value,
-              style: const TextStyle(fontSize: 16, color: Colors.black),
+              style: TextStyle(fontSize: 16.sp, color: Colors.black),
             ),
           ],
         ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import "package:delightful_toast/delight_toast.dart";
 import 'package:delightful_toast/toast/components/toast_card.dart';
+import "package:flutter_screenutil/flutter_screenutil.dart";
 
 import "package:cafey_app/utils/image_assets.dart";
 
@@ -14,7 +15,7 @@ void showCafeyToast(BuildContext context, String message, ToastType type) {
         title: Center(
           child: Text(
             message,
-            style: TextStyle(fontWeight: FontWeight.w700, fontSize: 15.0),
+            style: TextStyle(fontWeight: FontWeight.w700, fontSize: 15.0.sp),
           ),
         ),
         leading: ImageIcon(
@@ -22,15 +23,15 @@ void showCafeyToast(BuildContext context, String message, ToastType type) {
               ? toastAlertFilledIcon
               : toastSuccessFilledIcon,
           color: Colors.brown,
-          size: 30,
+          size: 30.h,
         ),
         trailing: IconButton(
-          icon: const ImageIcon(
+          icon: ImageIcon(
             toastCloseFilledIcon,
             color: Colors.brown,
-            size: 15,
+            size: 15.h,
           ),
-          padding: EdgeInsets.all(10),
+          padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
           onPressed: () {
             DelightToastBar.removeAll();
           },

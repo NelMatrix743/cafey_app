@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 
 import "package:provider/provider.dart";
+import "package:flutter_screenutil/flutter_screenutil.dart";
 
 import "package:cafey_app/components/info_box.dart";
 
@@ -15,7 +16,7 @@ class InformationHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<UserInformation>(
       builder: (context, userInfo, child) => Container(
-        padding: EdgeInsets.only(top: 12.0, bottom: 12.0),
+        padding: EdgeInsets.only(top: 12.0.h, bottom: 12.0.h),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [

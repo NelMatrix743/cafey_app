@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import "package:flutter_screenutil/flutter_screenutil.dart";
 
 class CafeyPayButton extends StatefulWidget {
   final VoidCallback onTapCallBack;
@@ -19,12 +20,12 @@ class _CafeyPayButtonState extends State<CafeyPayButton> {
       onTapUp: (_) => setState(() => _pressed = false),
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 120),
-        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 25),
-        margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 25.w),
+        margin: EdgeInsets.symmetric(horizontal: 20.h, vertical: 10.w),
         width: double.infinity,
         decoration: BoxDecoration(
           color: _pressed ? Colors.grey.shade200 : Colors.brown,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(10.r),
         ),
         child: Center(
           child: Text(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 //import "package:flutter/rendering.dart";
 
 import 'package:provider/provider.dart';
@@ -19,11 +20,16 @@ class CafeyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (context) => UserInformation(),
-      builder: (context, child) => MaterialApp(
-        title: "Cafey App",
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(fontFamily: "Consolas"),
-        home: HomeScreen(),
+      builder: (context, child) => ScreenUtilInit(
+        designSize: const Size(411.4, 923.4),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (context, unrequiredChildWidget) => MaterialApp(
+          title: "Cafey App",
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(fontFamily: "Consolas"),
+          home: HomeScreen(),
+        ),
       ),
     );
   }

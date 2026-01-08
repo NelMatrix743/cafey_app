@@ -1,5 +1,7 @@
 import "package:flutter/material.dart";
 
+import "package:flutter_screenutil/flutter_screenutil.dart";
+
 import "package:cafey_app/models/coffee.dart";
 
 class CoffeeProductTile extends StatelessWidget {
@@ -16,14 +18,14 @@ class CoffeeProductTile extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: Colors.grey[400],
-        borderRadius: BorderRadius.all(Radius.circular(15.0)),
+        borderRadius: BorderRadius.all(Radius.circular(15.0.r)),
       ),
-      margin: const EdgeInsets.only(bottom: 15.0),
-      padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 10),
+      margin: EdgeInsets.only(bottom: 15.0.h),
+      padding: EdgeInsets.symmetric(vertical: 30.0.h, horizontal: 10.w),
       child: ListTile(
         title: Text(coffeeProduct.name),
         subtitle: Container(
-          margin: EdgeInsets.only(top: 5),
+          margin: EdgeInsets.only(top: 5.h),
           child: Text(
             coffeeProduct.price,
             style: TextStyle(fontWeight: FontWeight.bold),
@@ -31,8 +33,8 @@ class CoffeeProductTile extends StatelessWidget {
         ),
         leading: Image(
           image: coffeeProduct.coffeeImage,
-          width: 70.0,
-          height: 70.0,
+          width: 70.0.h,
+          height: 70.0.h,
         ),
         trailing: IconButton(
           icon: Icon(Icons.add),
@@ -41,7 +43,7 @@ class CoffeeProductTile extends StatelessWidget {
             backgroundColor: Colors.brown,
             foregroundColor: Colors.white,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(10.r),
             ),
           ),
         ),

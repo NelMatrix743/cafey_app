@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 
 import "package:provider/provider.dart";
 import "package:flutter_slidable/flutter_slidable.dart";
+import "package:flutter_screenutil/flutter_screenutil.dart";
 
 import "package:cafey_app/components/cart_content_button.dart";
 
@@ -60,27 +61,27 @@ class CartContentTile extends StatelessWidget {
     return Slidable(
       endActionPane: ActionPane(
         motion: BehindMotion(),
-        extentRatio: 0.4,
+        extentRatio: 0.4.w,
         children: <Widget>[
           CustomSlidableAction(
             onPressed: ((context) => deleteAction()),
             foregroundColor: Colors.white,
             backgroundColor: Colors.brown,
-            borderRadius: BorderRadius.circular(12),
-            child: ImageIcon(deleteTileFilledIcon, size: 25),
+            borderRadius: BorderRadius.circular(12.r),
+            child: ImageIcon(deleteTileFilledIcon, size: 25.h),
           ),
         ],
       ),
       child: Container(
         decoration: BoxDecoration(
           color: Colors.grey[400],
-          borderRadius: BorderRadius.all(Radius.circular(15.0)),
+          borderRadius: BorderRadius.all(Radius.circular(12.0.r)),
         ),
-        padding: const EdgeInsets.only(top: 30.0, bottom: 30.0),
+        padding: EdgeInsets.only(top: 30.0.h, bottom: 27.0.h),
         child: ListTile(
           title: Text(selectedCoffee.name),
           subtitle: Container(
-            margin: EdgeInsets.only(top: 5),
+            margin: EdgeInsets.only(top: 5.h),
             child: Text(
               selectedCoffee.price,
               style: TextStyle(fontWeight: FontWeight.bold),
@@ -88,8 +89,8 @@ class CartContentTile extends StatelessWidget {
           ),
           leading: Image(
             image: selectedCoffee.coffeeImage,
-            width: 70.0,
-            height: 70.0,
+            width: 70.0.h,
+            height: 70.0.h,
           ),
           trailing: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -104,22 +105,19 @@ class CartContentTile extends StatelessWidget {
                   coffeeProductPrice,
                 ),
               ),
-              SizedBox(width: 8),
+              SizedBox(width: 8.w),
               Container(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 5,
-                  horizontal: 10,
-                ),
+                padding: EdgeInsets.symmetric(vertical: 5.h, horizontal: 10.w),
                 decoration: BoxDecoration(
-                  border: Border.all(color: Colors.brown, width: 2),
-                  borderRadius: BorderRadius.circular(6),
+                  border: Border.all(color: Colors.brown, width: 2.w),
+                  borderRadius: BorderRadius.circular(6.r),
                 ),
                 child: Text(
                   numberOfCups.toString(),
-                  style: TextStyle(fontSize: 15),
+                  style: TextStyle(fontSize: 15.sp),
                 ),
               ),
-              SizedBox(width: 8),
+              SizedBox(width: 8.w),
               CartContentButton(
                 icon: Icon(Icons.add),
                 onPressed: () => addACup(

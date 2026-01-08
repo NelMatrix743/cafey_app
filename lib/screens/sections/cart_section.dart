@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 
 import "package:provider/provider.dart";
+import "package:flutter_screenutil/flutter_screenutil.dart";
 
 import "package:cafey_app/components/info_header.dart";
 import "package:cafey_app/components/cart_coffee_tile.dart";
@@ -22,26 +23,29 @@ class CartSection extends StatelessWidget {
     userInfo.removeCoffee(totalPriceToDeduct, numberOfCups);
   }
 
-  void paymentButtonCallBack() {}
+  void paymentButtonCallBack(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    debugPrint(size.toString());
+  }
 
   @override
   Widget build(BuildContext context) {
     return Consumer<UserInformation>(
       builder: (context, userInfo, child) => SafeArea(
         child: Padding(
-          padding: EdgeInsets.fromLTRB(15.0, 20.0, 15.0, 10.0),
+          padding: EdgeInsets.fromLTRB(15.0.w, 20.0.h, 15.0.w, 10.0.h),
           child: Column(
             children: [
               InformationHeader(),
-              SizedBox(height: 30),
+              SizedBox(height: 30.h),
               // ListBuilder,
               Expanded(
                 child: userInfo.getUserCartContents.isEmpty
-                    ? const Center(
+                    ? Center(
                         child: Text(
                           "Your cart is empty",
                           style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 20.sp,
                             fontWeight: FontWeight.w400,
                           ),
                         ),
@@ -62,13 +66,15 @@ class CartSection extends StatelessWidget {
                           );
                         },
                         separatorBuilder: (context, index) =>
-                            SizedBox(height: 15),
+                            SizedBox(height: 15.h),
                       ),
               ),
 
               Visibility(
                 visible: userInfo.getUserCartContents.isNotEmpty,
-                child: CafeyPayButton(onTapCallBack: paymentButtonCallBack),
+                child: CafeyPayButton(
+                  onTapCallBack: () => paymentButtonCallBack(context),
+                ),
               ),
             ],
           ),
